@@ -34,27 +34,27 @@ resource "aws_route_table_association" "a" {
 }
 
 resource "aws_security_group" "jenkins_sg" {
-  name        = "jenkins-security-group"
-  description = "Security group for Jenkins instance"
+  name        = var.jenkins_sg_name
+  description = var.jenkins_sg_description
   vpc_id      = aws_vpc.jenkins_vpc.id
 
   ingress {
-    from_port   = var.ingress_ports
-    to_port     = var.ingress_ports
-    protocol    = var.ingress_protocol
-    cidr_blocks = var.egress_cidr_blocks
+    from_port   = var.ingress_port_http   # 80
+    to_port     = var.ingress_port_http   # 80 
+    protocol    = var.ingress_protocol    # "tcp"
+    cidr_blocks = var.ingress_cidr_blocks # ["0.0.0.0/0"]
   }
   ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    from_port   = var.ingress_port_https  # 443
+    to_port     = var.ingress_port_https  # 443
+    protocol    = var.ingress_protocol    # "tcp"
+    cidr_blocks = var.ingress_cidr_blocks # ["0.0.0.0/0"]
   }
   ingress {
-    from_port   = 443
-    to_port     = 443
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    from_port   = var.ingress_port_ssh    # 22
+    to_port     = var.ingress_port_ssh    # 22
+    protocol    = var.ingress_protocol    # "tcp"
+    cidr_blocks = var.ingress_cidr_blocks # ["0.0.0.0/0"]
   }
 
   egress {
@@ -77,7 +77,7 @@ resource "aws_instance" "jenkins_instance" {
   EOF
 
   tags = {
-    Name = "JenkinsServer"
+    Name = var.jenkins_instance_tag
   }
 }
 

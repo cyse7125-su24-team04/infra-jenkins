@@ -39,10 +39,19 @@ variable "egress_cidr_blocks" {
   type        = list(string)
 }
 
-variable "ingress_ports" {
-  description = "Ports for ingress traffic"
+variable "ingress_port_http" {
+  description = "Port for http ingress traffic"
   type        = number
 }
+variable "ingress_port_https" {
+  description = "Port for https ingress traffic"
+  type        = number
+}
+variable "ingress_port_ssh" {
+  description = "Port for ssh ingress traffic"
+  type        = number
+}
+
 variable "egress_ports" {
   description = "Ports for egress traffic"
   type        = number
@@ -59,3 +68,7 @@ variable "destination_cidr_block" {
   description = "Destination CIDR block"
 }
 
+variable "jenkins_instance_tag" {
+  description = "Destination CIDR block"
+  default     = "jenkins-instance"
+}
