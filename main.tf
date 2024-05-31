@@ -74,6 +74,9 @@ resource "aws_instance" "jenkins_instance" {
   user_data                   = <<-EOF
     #!/bin/bash
     sudo certbot --nginx -d jenkins.csye6225cloud.me --register-unsafely-without-email --agree-tos --test-cert
+    sudo mkdir -p /var/lib/jenkins/init.groovy.d
+    sudo cp /home/ubuntu/create_user_and_helloworld_job.groovy /var/lib/jenkins/init.groovy.d/
+    sudo systemctl restart jenkins.service
   EOF
 
   tags = {
