@@ -68,7 +68,18 @@ variable "destination_cidr_block" {
   description = "Destination CIDR block"
 }
 
+variable "jenkins_sg_name" {
+  description = "Name of the security group for Jenkins instance"
+  default     = "jenkins-security-group"
+}
+
+variable "jenkins_sg_description" {
+  description = "Description of the security group for Jenkins instance"
+  default     = "Security group for Jenkins instance"
+}
+
+
 variable "jenkins_instance_tag" {
-  description = "Destination CIDR block"
+  description = "Tag for the Jenkins instance"
   default     = "jenkins-instance"
 }
