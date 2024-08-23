@@ -62,14 +62,16 @@ terraform destroy
 ```
 
 ## Features
- **VPC Creation**:Creates a VPC to host the Jenkins infrastructure.
-**Subnet**: Provisions a public subnet within the VPC.
-**Internet Gateway**: Attaches an internet gateway to allow internet access.
-**Route Table**: Configures route tables for the subnet.
-**Security Group**: Defines security group rules for HTTP, HTTPS, and SSH access.
-**EC2 Instance**: Launches an EC2 instance with Jenkins pre-installed and configures it to use an existing Elastic IP.
-**EIP Association**: Associates an existing Elastic IP with the EC2 instance.
-**SSL with Let's Encrypt**: The EC2 instance automatically sets up SSL certificates using Let's Encrypt via certbot.
+
+- **VPC Creation**: Creates a VPC to host the Jenkins infrastructure.
+- **Subnet**: Provisions a public subnet within the VPC.
+- **Internet Gateway**: Attaches an internet gateway to allow internet access.
+- **Route Table**: Configures route tables for the subnet.
+- **Security Group**: Defines security group rules for HTTP, HTTPS, and SSH access.
+- **EC2 Instance**: Launches an EC2 instance with Jenkins pre-installed and configures it to use an existing Elastic IP.
+- **EIP Association**: Associates an existing Elastic IP with the EC2 instance.
+- **SSL with Let's Encrypt**: The EC2 instance automatically sets up SSL certificates using Let's Encrypt via certbot.
+
 
 ## Configuration
 You can configure the infrastructure by modifying the variables.tf file or passing variables directly during the Terraform apply command.
