@@ -71,7 +71,12 @@ resource "aws_instance" "jenkins_instance" {
   subnet_id                   = aws_subnet.jenkins_subnet.id
   security_groups             = [aws_security_group.jenkins_sg.id]
   associate_public_ip_address = true
-  user_data                   = <<-EOF
+  root_block_device {
+    volume_size           = 32
+    volume_type           = "gp2"
+    delete_on_termination = true
+  }
+  user_data = <<-EOF
     #!/bin/bash
     sudo certbot --nginx -d jenkins.csye6225cloud.me --register-unsafely-without-email --agree-tos --test-cert
     sudo systemctl restart jenkins.service
