@@ -23,7 +23,7 @@ cd infra-jenkins
 
 
 ## Usage
-Set Up Variables: Update the terraform.tfvars file or set the environment variables as described in the Prerequisites section.
+Set Up Variables: Update the terraform.tfvars file or set the environment variables.
 
 **1.Initialize Terraform:**
 
